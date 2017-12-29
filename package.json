@@ -1,0 +1,22 @@
+{
+  "name": "schema-validation",
+  "version": "1.0.0",
+  "description": "CLI for validation JSON Schema and Hyperschema files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zdne/schema-validation.git"
+  },
+  "author": "Zdenek Nemec",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zdne/schema-validation/issues"
+  },
+  "homepage": "https://github.com/zdne/schema-validation#readme",
+  "dependencies": {
+    "ajv": "^6.0.0-rc.1"
+  }
+}
