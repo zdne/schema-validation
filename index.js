@@ -1,17 +1,31 @@
 const Ajv = require('ajv');
-const ajv = new Ajv({ allErrors: true });
+// const hyperSchema = require('./refs/hyper-schema-draft-07');
+// const linkSchema = require('./refs/links-draft-07');
 
-const schema = {
-  "properties": {
-    "foo": { "type": "string" },
-    "bar": { "type": "number", "maximum": 3 }
-  }
-};
 
-const validate = ajv.compile(schema);
+var ajv = new Ajv({ allErrors: true, verbose: true, missingRefs: true });
+// ajv.addMetaSchema(linkSchema);
+// ajv.addMetaSchema(hyperSchema);
 
-test({ "foo": "abc", "bar": 2 });
-test({ "foo": 2, "bar": 4 });
+// let validate = ajv.compile(hyperSchema);
+
+// ({schemas: [linkSchema, hyperSchema]});
+// ajv.addMetaSchema(linkSchema);
+// ajv.addMetaSchema(hyperSchema);
+
+var validate = ajv.getSchema('http://json-schema.org/draft-07/schema#');
+
+
+const testSchema = {
+  type: "object",
+  properties: {
+    "a": { "$ref": "#/definitions/noRequiredFields"}
+  },
+  required: ["a"]
+}
+
+test(testSchema);
+// test({ "foo": 2, "bar": 4 });
 
 function test(data) {
   let valid = validate(data);
